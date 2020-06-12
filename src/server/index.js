@@ -6,7 +6,6 @@ const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 const dotenv = require('dotenv')
 
-
 dotenv.config()
 
 var textapi = new aylien({
@@ -19,6 +18,11 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
+// to use url encoded values
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+
 app.use(express.static('dist'))
 
 console.log(__dirname)
@@ -28,18 +32,21 @@ app.get('/', function(req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function() {
-    console.log('Example app listening on port 8081!')
+app.listen(8080, function() {
+    console.log('Server listening on port 8080!')
 })
 
 app.get('/test', function(req, res) {
+    res.send(mockAPIResponse)
+});
+
+
+app.post('/article', function(req, res) {
     textapi.sentiment({
-        'url': 'https://www.skillsyouneed.com/ips/dealing-with-criticism.html'
+        'url': req.body.text
     }, function(error, response) {
         if (error === null) {
             res.send(response);
-            console.log(response);
         }
     });
-
 })
