@@ -50,3 +50,5 @@ app.post('/article', function(req, res) {
         }
     });
 })
+
+module.exports = app;
