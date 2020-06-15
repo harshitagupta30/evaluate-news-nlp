@@ -72,6 +72,18 @@
         <p>Developed with love using <a href="https://aylien.com/text-api/">Aliyen Text API</a></p>
     </footer>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                    console.log('SW registered successfuly: ', registration);
+                });
+            });
+        } else {
+            console.log("Service Working not supported");
+        }
+    </script>
+
 </body>
 
 </html>
