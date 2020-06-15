@@ -12,3 +12,38 @@ section {
     max-width: 800px;
     margin: 50px auto;
 }
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+.url-results {
+    max-width: 90%;
+    .result-item {
+        display: flex;
+        flex-direction: row;
+        padding: 20px 0;
+    }
+    h4 {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+}
+
+@media (min-width: 800px) {
+    .url-results {
+        max-width: 100%;
+    }
+}

@@ -2,6 +2,8 @@ form {
     border: 1px solid #545454;
     border-radius: 3px;
     padding: 40px;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 input {
@@ -9,4 +11,10 @@ input {
     width: 100%;
     line-height: 16px;
     margin: 10px 0;
+}
+
+@media (min-width: 800px) {
+    form {
+        max-width: 100%;
+    }
 }

@@ -1,54 +1,38 @@
-var path = require('path')
-var aylien = require("aylien_textapi")
+var path = require('path');
 var cors = require('cors');
-var bodyParser = require('body-parser')
-const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
-const dotenv = require('dotenv')
+var bodyParser = require('body-parser');
+const express = require('express');
+const mockAPIResponse = require('./mockAPI.js');
+const requestPost = require('./handleRequest');
 
-dotenv.config()
 
-var textapi = new aylien({
-    application_id: process.env.API_ID,
-    application_key: process.env.API_KEY
-})
+const app = express();
 
-const app = express()
-
-app.use(cors())
-app.use(bodyParser.json())
+app.use(cors());
+app.use(bodyParser.json());
 
 // to use url encoded values
 app.use(bodyParser.urlencoded({
     extended: true
-}))
+}));
 
-app.use(express.static('dist'))
+app.use(express.static('dist'));
 
-console.log(__dirname)
+console.log(__dirname);
 
 app.get('/', function(req, res) {
-    res.sendFile('dist/index.html')
+    res.sendFile('dist/index.html');
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function() {
-    console.log('Server listening on port 8080!')
+app.listen(8081, function() {
+    console.log('Server listening on port 8081!');
 })
 
 app.get('/test', function(req, res) {
-    res.send(mockAPIResponse)
+    res.send(mockAPIResponse);
 });
 
-
-app.post('/article', function(req, res) {
-    textapi.sentiment({
-        'url': req.body.text
-    }, function(error, response) {
-        if (error === null) {
-            res.send(response);
-        }
-    });
-})
+app.post('/article', requestPost.handlePostRequest);
 
 module.exports = app;

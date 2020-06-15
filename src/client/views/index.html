@@ -3,58 +3,73 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Test</title>
+    <title>Evaluate an article using NLP</title>
 </head>
 
 <body>
 
     <header>
-        <div class="">
-            Logo
-        </div>
-        <div class="">
-            navigation
+        <div class="main-heading">
+            <h1>Evaluate a news article using Natural Language Processing</h1>
         </div>
     </header>
 
     <main>
         <section>
             <form class="" onsubmit="return Client.handleSubmit(event)">
-                <input id="name" type="url" name="test-url" value="" placeholder="https://www.news-source/a-news-article...">
+                <input id="name" type="url" name="input-url" value="" placeholder="Enter a valid URL">
                 <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
             </form>
 
             <section class="errors">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <div id="error"></div>
-            </section>
+                <!-- The Modal -->
+                <div id="notify-user-modal" class="modal">
 
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <span class="error"></span>
+                    </div>
+
+                </div>
+            </section>
 
             <section class="url-results">
-                <strong>Form Results:</strong>
                 <ul>
-                    <li>
-                        <h3>Text Polarity:</h3>
-                        <p id="polarity"></p>
-                        <h4>Confidence: </h4>
-                        <p id="polarity_confidence"></p>
+                    <li class="polarity">
+                        <div class="result-item">
+                            <h4>Text Polarity:</h3>
+                                <p id="polarity"></p>
+                        </div>
+                        <div class="result-item">
+                            <h4>Confidence: </h3>
+                                <p id="polarity_confidence"></p>
+                        </div>
                     </li>
 
-                    <li>
-                        <h3>Text Subjectivity:</h3>
-                        <p id="subjectivity"></p>
-                        <h4>Confidence: </h4>
-                        <p id="subjectivity_confidence"></p>
+                    <li class="subjectivity">
+                        <div class="result-item">
+                            <h4>Text Subjectivity:</h3>
+                                <p id="subjectivity"></p>
+                        </div>
+                        <div class="result-item">
+                            <h4>Confidence: </h3>
+                                <p id="subjectivity_confidence"></p>
+                        </div>
                     </li>
-
-                    <h3>Text Excerpt:</h3>
-                    <p id="excerpt"></p>
+                    <li>
+                        <div class="result-item">
+                            <h4>Text Excerpt:</h3>
+                                <p id="excerpt"></p>
+                        </div>
+                    </li>
                 </ul>
             </section>
+        </section>
     </main>
 
     <footer>
-        <p>This is a footer</p>
+        <p>Developed with love using <a href="https://aylien.com/text-api/">Aliyen Text API</a></p>
     </footer>
 
 </body>
