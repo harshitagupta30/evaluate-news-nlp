@@ -14,8 +14,8 @@ describe('Test "handlePostRequest()" should be a function', () => {
     });
 });
 
-describe('Test, the function "validateRequest()" throw error if incorrect user inputs', () => {
-    test('validateRequest should throw error if incorrect user inputs', () => {
+describe('Test, the function "handlePostRequest()" returns 200 if a valid url is being provided', () => {
+    test('handlePostRequest should send a 200 error if user inputs correctly', () => {
         const req = httpMocks.createRequest({
             body: {
                 url: "https://www.studentnewsdaily.com/daily-news-article/u-s-seizes-north-korean-cargo-ship/"
